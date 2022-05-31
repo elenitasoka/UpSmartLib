@@ -1,0 +1,39 @@
+  {
+  "project_info": {
+    "project_number": "499424212063",
+    "project_id": "upsmartlib-32d0e",
+    "storage_bucket": "upsmartlib-32d0e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499424212063:android:07cc6ed32a6f23798457ea",
+        "android_client_info": {
+          "package_name": "com.example.upsmartlib"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499424212063-3vrvvi42g3fofa7njq48ml2oeup2js2u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCu64qLTVCwxl1Cj5pWE_XonBAtuV7fKIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "499424212063-3vrvvi42g3fofa7njq48ml2oeup2js2u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
