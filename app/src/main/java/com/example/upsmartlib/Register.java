@@ -1,11 +1,11 @@
 package com.example.upsmartlib;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -18,14 +18,23 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.core.Tag;
 
-public class Register extends AppCompatActivity implements View.OnClickListener{
-    EditText mFullName,mEmail,mPassword,mDescription;
+public class Register extends AppCompatActivity  {
+    EditText mFullName, mEmail, mPassword, mDescription;
     Button mRegisterBtn;
     TextView mLoginBtn;
     FirebaseAuth fAuth;
     ProgressBar progressBar;
+    private     FirebaseDatabase database;
+    private  DatabaseReference mDatabase;
+    private FirebaseAuth mAuth;
+    private static final  String USER="user";
+    private static final String TAG="register";
+    private User user;
 
 
     @Override
@@ -33,142 +42,59 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mFullName = findViewById(R.id.fullName);
-        mEmail =findViewById(R.id.Email);
-        mPassword=findViewById(R.id.Password);
-        mDescription=findViewById(R.id.Description);
-        mRegisterBtn =findViewById(R.id.registerBtn);
-        mLoginBtn=findViewById(R.id.createText);
-        fAuth=FirebaseAuth.getInstance();
-        progressBar =findViewById(R.id.progressBar);
+        mEmail = findViewById(R.id.Email);
+        mPassword = findViewById(R.id.Password);
+        mDescription = findViewById(R.id.Description);
+        mRegisterBtn = findViewById(R.id.registerBtn);
+        mLoginBtn = findViewById(R.id.createText);
+        progressBar = findViewById(R.id.progressBar);
 
-        mRegisterBtn.setOnClickListener(this);
+        database=FirebaseDatabase.getInstance();
+        mDatabase=database.getReference(USER);
+        mAuth =FirebaseAuth. getInstance();
 
 
-        if(fAuth.getCurrentUser()!= null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-            finish();
-
-        }
-
-/*
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email =mEmail.getText().toString().trim();
+                String email=mEmail.getText().toString().trim();
                 String password=mPassword.getText().toString().trim();
+                String Fullname=mFullName.getText().toString().trim();
+                String description=mDescription.getText().toString().trim();
+                user=new User(Fullname,email,password);
+                RegisterUser(email,password);
 
-                if(TextUtils.isEmpty(email)){
-                    mEmail.setError("Email is Required");
-                    return;
-                }
-                if(TextUtils.isEmpty(password)){
-                    mEmail.setError("Password is Required");
-                    return;
-                }
-                if (password.length()<6)
-                {
-                    mPassword.setError("Password must be >=8 Characters");
-                }
-                progressBar.setVisibility(View.VISIBLE);
-                fAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(Register.this,"User Created",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        }else{
-                        Toast.makeText(Register.this,"Error!"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
             }
+
         });
-*/
-
+        
     }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.createText:
-                startActivity(new Intent(this,MainActivity.class));
-                break;
-            case R.id.registerBtn:
-                registerUser();
-        }
-    }
-
-    private void registerUser() {
-        String email=mEmail.getText().toString().trim();
-        String password=mPassword.getText().toString().trim();
-        String fullname=mFullName.getText().toString().trim();
-        String description=mDescription.getText().toString().trim();
-
-            if(fullname.isEmpty())
-            {
-                mFullName.setError("Full Name is required");
-                mFullName.requestFocus();
-                return;
-
-            }
-        if(email.isEmpty())
-        {
-            mEmail.setError("Email is required");
-            mEmail.requestFocus();
-            return;
-
-        }
-        if(description.isEmpty())
-        {
-            mDescription.setError("Full Name is required");
-            mDescription.requestFocus();
-            return;
-
-        }
-        if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            mEmail.setError("Provide valid email!");
-            mEmail.requestFocus();
-            return;
-        }
-        if(password.isEmpty())
-        {
-            mPassword.setError("Password is required");
-            mPassword.requestFocus();
-            return;
-
-        }
-        if(password.length()<6){
-            mPassword.setError("Password must be more that 6 characters");
-            mPassword.requestFocus();
-            return;
-
-        }
-        progressBar.setVisibility(View.VISIBLE);
-        fAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            User user=new User(fullname,email,description);
-                            FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(Register.this,"User has been created!",Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE)
-                                        ;
-                                    }
-                                    else{
-                                        Toast.makeText(Register.this,"User isnt created",Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    }
-                                }
-                            });
-                        }
+public  void RegisterUser(String email,String password){
+    mAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this, new  OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(TAG, "createUserWithEmail:success");
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        updateUI(user);
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                        Toast.makeText(Register.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+            });
 
-    }
 }
+public void updateUI(FirebaseUser currentUser){
+        String keyid=mDatabase.push().getKey();
+        mDatabase.child(keyid).setValue(user);
+        Intent loginIntent=new Intent(this,MainActivity.class);
+    startActivity(loginIntent);
+}
+
+}
+    
