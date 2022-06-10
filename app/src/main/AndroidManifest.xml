@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UpSmartLib">
         <activity
+            android:name=".AdminMenu"
+            android:exported="false" />
+        <activity
+            android:name=".ViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".Menu"
             android:exported="false" />
         <activity

@@ -1,6 +1,7 @@
-  {
+{
   "project_info": {
     "project_number": "499424212063",
+    "firebase_url": "https://upsmartlib-32d0e-default-rtdb.firebaseio.com",
     "project_id": "upsmartlib-32d0e",
     "storage_bucket": "upsmartlib-32d0e.appspot.com"
   },
