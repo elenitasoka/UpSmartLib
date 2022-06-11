@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UpSmartLib">
         <activity
+            android:name=".SeeBooksAdmin"
+            android:exported="false" />
+        <activity
             android:name=".AddBookAdmin"
             android:exported="false" />
         <activity

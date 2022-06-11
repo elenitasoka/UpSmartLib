@@ -29,10 +29,8 @@ public class AdminMenu extends AppCompatActivity implements View.OnClickListener
             case R.id.AddBookBtn:
                 startActivity(new Intent(getApplicationContext(), AddBookAdmin.class));
                 break;
-         //   case R.id.signIn:
-          //      String email = Email.getText().toString().trim();
-         //       String password = Password.getText().toString().trim();
-          //      signin(email, password);
+            case R.id.SeeBooksBtn:
+              startActivity(new Intent(getApplicationContext(), SeeBooksAdmin.class));
         }
 
     }

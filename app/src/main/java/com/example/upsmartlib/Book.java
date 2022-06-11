@@ -8,6 +8,18 @@ public class Book {
     private int availableCopys;
     private String bookId;
 
+    public Book() {
+    }
+
+    public Book(String title, String author, String image, String pages, int availableCopys, String bookId) {
+        this.title = title;
+        this.author = author;
+        this.image = image;
+        this.pages = pages;
+        this.availableCopys = availableCopys;
+        this.bookId = bookId;
+    }
+
     public String getBookId() {
         return bookId;
     }
