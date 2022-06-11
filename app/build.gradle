@@ -6,6 +6,11 @@ android {
     compileSdk 32
 
     defaultConfig {
+        defaultConfig {
+            vectorDrawables {
+                useSupportLibrary = true
+            }
+        }
         applicationId "com.example.upsmartlib"
         minSdk 21
         targetSdk 32

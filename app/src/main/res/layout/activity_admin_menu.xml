@@ -4,6 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#AEF8E7C6"
     tools:context=".AdminMenu">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/aclonica"
+        android:text="ADMIN"
+        android:textColor="#7E5B1F"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/AddBookBtn"
+        android:layout_width="362dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="26dp"
+        android:background="#FF9800"
+        android:backgroundTint="#88FF9800"
+        android:fontFamily="@font/aclonica"
+        android:text="ADD A BOOK"
+        android:textColor="#795548"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/SeeBooksBtn"
+        android:layout_width="362dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="26dp"
+        android:background="#FF9800"
+        android:backgroundTint="#88FF9800"
+        android:fontFamily="@font/aclonica"
+        android:text="SEE books"
+        android:textColor="#795548"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AddBookBtn" />
+
+    <Button
+        android:id="@+id/SeeUsersBtn"
+        android:layout_width="362dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="26dp"
+        android:background="#FF9800"
+        android:backgroundTint="#88FF9800"
+        android:fontFamily="@font/aclonica"
+        android:text="SEE USERS INFO"
+        android:textColor="#795548"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SeeBooksBtn" />
+
+    <Button
+        android:id="@+id/SeeUsersBooksBtn"
+        android:layout_width="362dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="26dp"
+        android:background="#FF9800"
+        android:backgroundTint="#88FF9800"
+        android:fontFamily="@font/aclonica"
+        android:text="SEE USERS BOOKS"
+        android:textColor="#795548"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SeeUsersBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

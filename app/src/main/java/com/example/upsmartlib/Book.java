@@ -5,6 +5,16 @@ public class Book {
     private String author;
     private String image;
     private String pages;
+    private int availableCopys;
+    private String bookId;
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
+    }
 
     public String getTitle() {
         return title;
@@ -12,6 +22,14 @@ public class Book {
 
     public String getAuthor() {
         return author;
+    }
+
+    public int getAvailableCopys() {
+        return availableCopys;
+    }
+
+    public void setAvailableCopys(int availableCopys) {
+        this.availableCopys = availableCopys;
     }
 
     public String getImage() {
@@ -37,5 +55,4 @@ public class Book {
     public void setPages(String pages) {
         this.pages = pages;
     }
-
 }
