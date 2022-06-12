@@ -97,7 +97,7 @@ public class Register extends AppCompatActivity  {
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
-                                    Log.d(TAG, "onSuccess: user Profile is created for " + userID);
+
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override

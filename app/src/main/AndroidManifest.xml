@@ -12,6 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UpSmartLib">
         <activity
+            android:name=".AddReadBook"
+            android:exported="false" />
+        <activity
+            android:name=".ChangeUserInfo"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".UserProfile"
+            android:exported="false" />
+        <activity
+            android:name=".UserBorrowedBooks"
+            android:exported="false" />
+        <activity
             android:name=".LendBook"
             android:exported="false" />
         <activity

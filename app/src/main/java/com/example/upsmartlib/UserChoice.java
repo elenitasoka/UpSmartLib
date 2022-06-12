@@ -28,7 +28,10 @@ public class UserChoice extends AppCompatActivity implements View.OnClickListene
                 startActivity(new Intent(getApplicationContext(),SeeBooksAdmin.class));
                 break;
             case R.id.SeeYourBooksBtn:
-                startActivity(new Intent(getApplicationContext(), SeeBooksAdmin.class));
+                startActivity(new Intent(getApplicationContext(), UserBorrowedBooks.class));
+                break;
+            case  R.id.SeeUsersBtn:
+                startActivity(new Intent(getApplicationContext(),EditProfile.class));
         }
 
     }

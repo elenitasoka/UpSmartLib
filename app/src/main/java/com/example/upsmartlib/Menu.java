@@ -28,7 +28,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener {
                 startActivity(new Intent(getApplicationContext(),UserChoice.class));
                 break;
             case R.id.button3:
-                startActivity(new Intent(getApplicationContext(), SeeBooksAdmin.class));
+                startActivity(new Intent(getApplicationContext(), UserProfile.class));
         }
 
     }
