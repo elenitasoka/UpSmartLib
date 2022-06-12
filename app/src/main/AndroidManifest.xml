@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UpSmartLib">
         <activity
+            android:name=".LendBook"
+            android:exported="false" />
+        <activity
+            android:name=".UserChoice"
+            android:exported="false" />
+        <activity
             android:name=".SeeBooksAdmin"
             android:exported="false" />
         <activity
